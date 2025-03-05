@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - EvaluaAI</title>
+    <style>
+        
+    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/teacher" id="dashboardLink">Dashboard</a></li>
+            <li><a href="/teacher/create-test" id="createTestLink">Create Test</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Teacher Dashboard</h1>
+        <p>Welcome, <%= user.username %>!</p>
+        
+        <div id="testList">
+            <h2>Your Tests</h2>
+            <div id="testListItems"></div>
+        </div>
+    </div>
+    <script src="/js/teacher.js"></script>
+</body>
+</html>

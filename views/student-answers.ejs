@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Answers - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Dashboard</a></li>
+            <li><a href="/teacher/create-test">Create Test</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Student Answers: <%= studentName %></h1>
+        <p>Test: <%= test.subject %> (ID: <%= testId %>)</p>
+        <ul id="answersList">
+            <% test.questions.forEach((question, index) => { %>
+                <li>
+                    <h3>Question <%= index + 1 %>:</h3>
+                    <p><%= question %></p>
+                    <h4>Answer:</h4>
+                    <p><%= studentAnswers[index] %></p>
+                    <h4>Score:</h4>
+                    <input type="number" id="score-<%= index %>" value="<%= testScores[index] %>" min="0" max="10" step="0.1">
+                    <button onclick="updateScore('<%= testId %>', '<%= studentName %>', <%= index %>)">Update Score</button>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <script src="/js/student-answers.js"></script>
+</body>
+</html>

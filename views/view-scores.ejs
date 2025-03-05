@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Scores - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/student" class="<%= path === '/student' ? 'active' : '' %>">Dashboard</a></li>
+            <li><a href="/student/view-scores" class="<%= path === '/student/view-scores' ? 'active' : '' %>">View Scores</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Your Scores</h1>
+        <% if (Object.keys(scores).length === 0) { %>
+            <p>No scores available yet.</p>
+        <% } else { %>
+            <% for (const [testId, scoreData] of Object.entries(scores)) { %>
+                <div class="score-item">
+                    <h2><%= scoreData.subject %></h2>
+                    <p>Test ID: <%= testId %></p>
+                    <p>Attempted on: <%= new Date(scoreData.attemptedAt).toLocaleString() %></p>
+                    <p>Total Score: <%= scoreData.scores.reduce((a, b) => a + b, 0) %> / <%= scoreData.scores.length * 10 %></p>
+                    <a href="/student/detailed-score/<%= testId %>" class="btn">View Detailed Score</a>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Test - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Dashboard</a></li>
+            <li><a href="/teacher/create-test">Create Test</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Create New Test</h1>
+        <form id="newTestForm">
+            <input type="text" id="subject" placeholder="Subject" required>
+            <input type="number" id="duration" placeholder="Duration (minutes)" required>
+            <input type="number" id="questionCount" placeholder="Number of Questions" required>
+            <button type="submit">Create Test</button>
+        </form>
+        <div id="questionForm" style="display: none;">
+            <h2>Add Questions</h2>
+            <p>Test Code: <span id="testCode"></span></p>
+            <div id="questionInputs"></div>
+            <button id="submitQuestions">Submit Questions</button>
+        </div>
+    </div>
+    <script src="/js/create-test.js"></script>
+</body>
+</html>

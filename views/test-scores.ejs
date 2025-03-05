@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Scores - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/teacher">Dashboard</a></li>
+            <li><a href="/teacher/create-test">Create Test</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Test Scores: <%= test.subject %></h1>
+        <p><strong>Test ID:</strong> <%= testId %></p>
+        <p><strong>Duration:</strong> <%= test.duration %> minutes</p>
+        <p><strong>Number of Questions:</strong> <%= test.questionCount %></p>
+        <p><strong>Created:</strong> <%= new Date(test.createdAt).toLocaleString() %></p>
+        <p><strong>Status:</strong> <%= test.isLive ? 'Live' : 'Not Live' %></p>
+
+        <h2>Student Scores</h2>
+        <% if (Object.keys(testScores).length === 0) { %>
+            <p>No students have taken this test yet.</p>
+        <% } else { %>
+            <ul>
+                <% Object.entries(testScores).forEach(([studentName, data]) => { %>
+                    <li>
+                        <%= studentName %>: 
+                        <%= data.scores.reduce((a, b) => a + b, 0) %> / <%= data.scores.length * 10 %>
+                        <p>Submitted: <%= new Date(data.submittedAt).toLocaleString() %></p>
+                        <a href="/teacher/student-answers/<%= testId %>/<%= studentName %>">View Answers</a>
+                        <button onclick="sendScoreToStudent('<%= testId %>', '<%= studentName %>')">Send Score</button>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
+    <script src="/js/test-scores.js"></script>
+</body>
+</html>

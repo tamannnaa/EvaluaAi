@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Test - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/teacher">Dashboard</a></li>
+            <li><a href="/teacher/create-test">Create Test</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Edit Test</h1>
+        <form id="editTestForm">
+            <input type="hidden" id="testId" value="<%= test._id %>">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" value="<%= test.subject %>" required>
+            
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="duration" value="<%= test.duration %>" required>
+            
+            <label for="questionCount">Number of Questions:</label>
+            <input type="number" id="questionCount" value="<%= test.questionCount %>" required>
+            
+            <h2>Questions:</h2>
+            <div id="questionInputs">
+                <% test.questions.forEach((question, index) => { %>
+                    <textarea id="question<%= index %>" name="question<%= index %>" required><%= question %></textarea>
+                <% }); %>
+            </div>
+            
+            <button type="submit">Update Test</button>
+        </form>
+    </div>
+
+    <script src="/js/edit-test.js"></script>
+</body>
+</html>

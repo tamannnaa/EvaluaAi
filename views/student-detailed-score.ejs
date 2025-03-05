@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Score - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/student">Dashboard</a></li>
+            <li><a href="/student/view-scores">View Scores</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Detailed Score: <%= test.subject %></h1>
+        <p><strong>Test ID:</strong> <%= testId %></p>
+        <p><strong>Attempted:</strong> <%= new Date(attemptedAt).toLocaleString() %></p>
+        <p><strong>Total Score:</strong> <%= totalScore %> / <%= test.questionCount * 10 %></p>
+
+        <h2>Questions and Answers</h2>
+        <ol>
+            <% test.questions.forEach((question, index) => { %>
+                <li>
+                    <h3>Question <%= index + 1 %>:</h3>
+                    <p><%= question %></p>
+                    <h4>Your Answer:</h4>
+                    <p><%= answers[index] %></p>
+                    <h4>Score:</h4>
+                    <p><%= scores[index] %> / 10</p>
+                </li>
+            <% }); %>
+        </ol>
+       
+    </div>
+</body>
+</html>

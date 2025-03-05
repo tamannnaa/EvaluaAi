@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - EvaluaAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/student" class="<%= path === '/student' ? 'active' : '' %>">Dashboard</a></li>
+            <li><a href="/student/view-scores" class="<%= path === '/student/view-scores' ? 'active' : '' %>">View Scores</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Student Portal</h1>
+        <p>Welcome, <%= user.username %>!</p>
+        
+        <div id="testList">
+            <h2>Available Tests</h2>
+            <div id="testListItems">
+                <!-- Live tests will be dynamically added here by JavaScript -->
+            </div>
+        </div>
+
+        <div id="quiz" style="display: none;">
+            <h2>Time Remaining: <span id="timer"></span></h2>
+            <h3 id="questionText"></h3>
+            <textarea id="answerInput" rows="4" cols="50" required></textarea>
+            <div>
+                <button id="prevBtn" style="display:none;">Previous</button>
+                <button id="nextBtn">Next</button>
+                <button id="submitBtn" style="display:none;">Submit</button>
+            </div>
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Quiz Complete!</h2>
+            <p>Your answers have been submitted. The teacher will review and send your scores.</p>
+        </div>
+    </div>
+
+    <script src="/js/student.js"></script>
+</body>
+</html>
